@@ -1,0 +1,29 @@
+#title {
+  font-size: 50px;
+  color: aqua;
+  text-align: center;
+}
+
+#gallery {
+  text-align: center;
+  display: inline-block;
+}
+
+#author {
+  font-family: fantasy;
+}
+
+#description {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+#image {
+  width: 25%;
+  height: 25%;
+  text-align: center;
+}
+
+button {
+  color: rgb(218, 30, 255);
+  font-size: 15px;
+}
