@@ -1,11 +1,10 @@
-<h1 id="title">welcome to ur gallery</h1>
-
-<form method="POST" action="/gallery">
-    <button type="submit">Create New Image</button>
-</form>
-
-<br>
-<a id="back" href="/">GO BACK BITCH</a>
+<div id="header">
+    <h1 id="title">welcome to ur gallery</h1>
+    <a id="create" href="/gallery/new">Create New Photo</a>
+    <br>
+    <br>
+    <a id="back" href="/">GO BACK BITCH</a>
+</div>
 
 <div id="gallery">
     {{#each gallery}}

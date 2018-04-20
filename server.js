@@ -29,14 +29,14 @@ app.use(
     store: new RedisStore(),
     secret: "overwatchisgewd",
     resave: false,
-    saveUninitialized: true
+    saveUninitialized: false
   })
 );
 app.use(passport.initialize());
 app.use(passport.session());
 
 app.use("/gallery", galleryRoute);
-app.use("/gallery", authRoute);
+app.use("/auth", authRoute);
 
 app.get("/", (req, res) => {
   console.log("sanity check");

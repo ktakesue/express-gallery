@@ -4,10 +4,10 @@ const Gallery = require("../db/models/Gallery.js");
 const Users = require("../db/models/Users.js");
 
 router
-  //see a new photo//
+  //see create new photo form//
   .get("/new", (req, res) => {
     console.log("new photo");
-    res.json("see a new photo");
+    return res.render("templates/gallery/new");
   });
 
 //get photos from gallery//
@@ -17,7 +17,9 @@ router
 
     return Gallery.fetchAll()
       .then(data => {
-        return res.render("templates/index", { gallery: data.serialize() });
+        return res.render("templates/gallery/index", {
+          gallery: data.toJSON()
+        });
       })
       .catch(err => {
         return res.json({ message: err.message });
@@ -26,7 +28,19 @@ router
   //post a new photo//
   .post("/", (req, res) => {
     console.log("post a new photo");
-    res.json("post a new photo");
+    console.log("req.body", req.body);
+    // res.json("post a new photo");
+    const { author, link, description } = req.body;
+
+    return new Gallery({ author, link, description })
+      .save()
+      .then(data => {
+        console.log("result", data);
+        return res.redirect("/gallery");
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   });
 //get photo by id//
 router

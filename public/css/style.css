@@ -1,12 +1,74 @@
+html {
+  background: linear-gradient(to right, #b993d6, #8ca6db);
+}
+
+#header {
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  height: 77px;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  max-width: 1010px;
+  padding: 26px 40px;
+  -webkit-transition: height 0.2s ease-in-out;
+  transition: height 0.2s ease-in-out;
+  width: 100%;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
 #title {
   font-size: 50px;
   color: aqua;
-  text-align: center;
+}
+
+#create,
+#back {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  padding-left: 24px;
+  white-space: nowrap;
 }
 
 #gallery {
   text-align: center;
-  display: inline-block;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  border: 0 solid #000;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  position: relative;
 }
 
 #author {
@@ -17,13 +79,26 @@
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+
 #image {
-  width: 25%;
-  height: 25%;
+  width: 50%;
+  height: 50%;
   text-align: center;
+}
+
+a:link {
+  text-decoration: none;
 }
 
 button {
   color: rgb(218, 30, 255);
   font-size: 15px;
+}
+
+h1 {
+  color: goldenrod;
+}
+
+h2 {
+  color: hotpink;
 }
