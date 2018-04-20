@@ -14,7 +14,6 @@ router
 router
   .get("/", (req, res) => {
     console.log("gallery shows");
-
     return Gallery.fetchAll()
       .then(data => {
         return res.render("templates/gallery/index", {
@@ -28,8 +27,6 @@ router
   //post a new photo//
   .post("/", (req, res) => {
     console.log("post a new photo");
-    console.log("req.body", req.body);
-    // res.json("post a new photo");
     const { author, link, description } = req.body;
 
     return new Gallery({ author, link, description })
@@ -46,7 +43,17 @@ router
 router
   .get("/:id", (req, res) => {
     console.log("get photo by id");
-    res.json("get photo by id");
+    const gallery_id = Number(req.params.id);
+    return Gallery.where({ gallery_id })
+      .fetchAll()
+      .then(data => {
+        return res.render("templates/gallery/image", {
+          gallery: data.toJSON()
+        });
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   })
   //see edit form by id//
   .get("/:id/edit", (req, res) => {

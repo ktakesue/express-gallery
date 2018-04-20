@@ -8,10 +8,14 @@
 
 <div id="gallery">
     {{#each gallery}}
-    <h1 id="author">{{author}}</h1>
+    <h1>
+        <a id="author" href="/gallery/{{gallery_id}}">{{author}}</a>
+    </h1>
     <h2>
-        <img id="image" src="{{link}}">
+        <a id="author" href="/gallery/{{gallery_id}}">
+            <img id="image" src="{{link}}">
+        </a>
     </h2>
-    <h3 id="description">{{description}}</h3>
-    {{/each}}
+    {{!--
+    <h3 id="description">{{description}}</h3> --}} {{/each}}
 </div>

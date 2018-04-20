@@ -1,0 +1,20 @@
+<h1>giving you the Deets</h1>
+{{#gallery}}
+<h1 id="author"> author: {{author}}</h1>
+<h2>
+    <img id="image" src="{{link}}">
+</h2>
+<h3>{{description}}</h3>
+{{/gallery}}
+
+
+<button>
+    <a class="edit" href="/gallery/{{gallery_id}}/edit">Edit Photo
+</button>
+<br>
+<br>
+<form method="POST" action="/gallery/{{gallery_id}}?_method=DELETE">
+    <button class="delete" type="submit">Delete Article</button>
+</form>
+<br>
+<a href="/gallery">GO BACK BITCH</a>
