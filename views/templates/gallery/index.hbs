@@ -1,9 +1,13 @@
 <div id="header">
     <h1 id="title">welcome to ur gallery</h1>
-    <a id="create" href="/gallery/new">Create New Photo</a>
+    <a id="create" href="/gallery/new">
+        <button>New Photo</button>
+    </a>
     <br>
     <br>
-    <a id="back" href="/">GO BACK BITCH</a>
+    <a id="back" href="/">
+        <button>GO BACK BITCH</button>
+    </a>
 </div>
 
 <div id="gallery">
@@ -16,6 +20,5 @@
             <img id="image" src="{{link}}">
         </a>
     </h2>
-    {{!--
-    <h3 id="description">{{description}}</h3> --}} {{/each}}
+    {{/each}}
 </div>

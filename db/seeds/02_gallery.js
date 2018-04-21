@@ -6,7 +6,6 @@ exports.seed = function(knex, Promise) {
       // Inserts seed entries
       return knex("gallery").insert([
         {
-          gallery_id: 1,
           author: "Blizzard",
           link:
             "https://d1u1mce87gyfbn.cloudfront.net/media/screenshot/brigitte-screenshot-001.jpg",
@@ -14,7 +13,6 @@ exports.seed = function(knex, Promise) {
           user_id: 3
         },
         {
-          gallery_id: 2,
           author: "TracerMain",
           link:
             "https://d1u1mce87gyfbn.cloudfront.net/media/screenshot/tracer-screenshot-002.jpg",
@@ -22,7 +20,6 @@ exports.seed = function(knex, Promise) {
           user_id: 1
         },
         {
-          gallery_id: 3,
           author: "McCRee's Bae",
           link:
             "https://d1u1mce87gyfbn.cloudfront.net/media/screenshot/mccree-screenshot-001.jpg",
