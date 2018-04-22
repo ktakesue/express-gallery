@@ -9,7 +9,6 @@ router
     console.log("new photo");
     return res.render("templates/gallery/new");
   });
-
 //get photos from gallery//
 router
   .get("/", (req, res) => {
@@ -26,49 +25,92 @@ router
   })
   //post a new photo//
   .post("/", (req, res) => {
-    console.log("post a new photo");
+    console.log("posted a new photo");
     const { author, link, description } = req.body;
+    const { user_id } = req.user;
+    // console.log("req.user", req.user);
 
-    return new Gallery({ author, link, description })
+    return new Gallery({ author, link, description, user_id })
       .save()
       .then(data => {
-        console.log("result", data);
+        // console.log("result", data);
         return res.redirect("/gallery");
       })
       .catch(err => {
         return res.json({ message: err.message });
       });
   });
-//get photo by id//
-router
-  .get("/:id", (req, res) => {
-    console.log("get photo by id");
-    const gallery_id = Number(req.params.id);
+
+router //see edit form by id//
+  .get("/:id/edit", (req, res) => {
+    console.log("get form to edit photo by id");
+    const gallery_id = req.params.id;
     return Gallery.where({ gallery_id })
-      .fetchAll()
+      .fetch()
       .then(data => {
-        return res.render("templates/gallery/image", {
-          gallery: data.toJSON()
-        });
+        data = data.toJSON();
+        return res.render("templates/gallery/edit", data);
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
+  });
+
+router
+  .route("/:id")
+  //get photo by id//
+  .get((req, res) => {
+    console.log("get photo by id");
+    const gallery_id = req.params.id;
+    console.log("gallery_id", gallery_id);
+    return Gallery.where({ gallery_id })
+      .fetch()
+      .then(data => {
+        data = data.toJSON();
+        // console.log("HERO", data);
+        return res.render("templates/gallery/image", data);
       })
       .catch(err => {
         return res.json({ message: err.message });
       });
   })
-  //see edit form by id//
-  .get("/:id/edit", (req, res) => {
-    console.log("get form to edit photo by id");
-    res.json("get form to edit photo by id");
-  })
   //edit photo by id//
-  .put("/:id", (req, res) => {
+  .put((req, res) => {
     console.log("edit photo by id");
-    res.json("edit photo by id");
+    const gallery_id = req.params.id;
+    const payload = {
+      author: req.body.author,
+      link: req.body.link,
+      description: req.body.description
+    };
+    return Gallery.where({ gallery_id })
+      .fetch()
+      .then(gallery => {
+        console.log("NEW INFO", payload);
+        return gallery.save(payload);
+      })
+      .then(result => {
+        // console.log("result", result);
+        return res.redirect(`/gallery/${gallery_id}`);
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   })
   //delete photo by id//
-  .delete("/:id", (req, res) => {
+  .delete((req, res) => {
     console.log("delete photo by id");
-    res.json("delete photo by id");
+    const gallery_id = req.params.id;
+
+    Gallery.where({ gallery_id })
+      .destroy()
+      .then(result => {
+        // console.log("deleted", result);
+        return res.redirect("/gallery");
+      })
+      .catch(err => {
+        return res.json({ message: err.message });
+      });
   });
 
 module.exports = router;

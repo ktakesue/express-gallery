@@ -78,19 +78,21 @@ router.post("/register", (req, res) => {
     })
     .catch(err => {
       console.log("err", err);
-      return res.redirect("/");
+      return res.redirect("/auth/register");
     });
 });
 
 router.post(
   "/login",
-  passport.authenticate("local", { failureRedirect: "/" }),
+  passport.authenticate("local", { failureRedirect: "/auth/login" }),
   (req, res) => {
+    console.log("logggggged in sucker");
     return res.redirect("/gallery");
   }
 );
 
 router.post("/logout", (req, res) => {
+  console.log("logggged out bitch");
   req.logout();
   return res.redirect("/");
 });

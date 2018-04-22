@@ -1,24 +1,25 @@
 <div id="header">
     <h1 id="title">welcome to ur gallery</h1>
     <a id="create" href="/gallery/new">
-        <button>New Photo</button>
+        <button>Create New Photo</button>
     </a>
     <br>
     <br>
-    <a id="back" href="/">
-        <button>GO BACK BITCH</button>
+    <form method="POST" action="/auth/logout">
+        <button id="back" type="submit">Log-Out</button>
+    </form>
     </a>
 </div>
 
 <div id="gallery">
     {{#each gallery}}
-    <h1>
-        <a id="author" href="/gallery/{{gallery_id}}">{{author}}</a>
-    </h1>
     <h2>
-        <a id="author" href="/gallery/{{gallery_id}}">
-            <img id="image" src="{{link}}">
+        <a href="/gallery/{{gallery_id}}">
+            <img src="{{link}}">
         </a>
     </h2>
+    <h1 id="author">
+        <a href="/gallery/{{gallery_id}}">BY: {{author}}</a>
+    </h1>
     {{/each}}
 </div>
