@@ -1,0 +1,25 @@
+<div id="header">
+    <h1 id="title">WELCOME TO UR GALLERY</h1>
+    <a id="create" href="/gallery/new">
+        <button>Create New Photo</button>
+    </a>
+    <br>
+    <br>
+    <form method="POST" action="/auth/logout">
+        <button id="back" type="submit">Log Out</button>
+    </form>
+    </a>
+</div>
+
+<div id="gallery">
+    {{#each gallery}}
+    <h2>
+        <a href="/gallery/{{gallery_id}}">
+            <img src="{{link}}">
+        </a>
+    </h2>
+    <h1 id="author">
+        <a href="/gallery/{{gallery_id}}">BY: {{author}}</a>
+    </h1>
+    {{/each}}
+</div>

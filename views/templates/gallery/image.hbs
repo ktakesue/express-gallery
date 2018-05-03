@@ -1,0 +1,21 @@
+<h1>giving you the Deets</h1>
+<h1 id="authorDetail"> author: {{author}}</h1>
+<h2>
+    <img id="image" src="{{link}}">
+</h2>
+<h3>"{{description}}"</h3>
+
+<br>
+<a href="/gallery/{{gallery_id}}/edit">
+    <button id="edit">Edit da Photo</button>
+</a>
+<br>
+<br>
+<form method="POST" action="/gallery/{{gallery_id}}?_method=DELETE">
+    <button id="delete" type="submit">Delete Article</button>
+</form>
+<br>
+
+<a href="/gallery">
+    <button>GO BACK BITCH</button>
+</a>
